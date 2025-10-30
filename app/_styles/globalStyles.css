@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  /* overflow: hidden; */
+  font-family: "Gangwon", sans-serif, "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --snb-width: 200px;
+  scrollbar-width: 0.5px;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --snb-width: 64px;
+  }
+}
+
+@font-face {
+  font-family: "Gangwon";
+  font-weight: 300;
+  font-display: swap;
+  src: url("../_assets/fonts/gangwon-light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Gangwon";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../_assets/fonts/gangwon-bold.otf") format("opentype");
+}
+
+div {
+  /* user-select: none; */
+}
