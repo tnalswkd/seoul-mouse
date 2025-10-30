@@ -10,34 +10,34 @@ export const variants: Record<
   }
 > = {
   title: {
-    fontWeight: 700,
-    fontSize: "42px",
-    lineHeight: "50px",
-    letterSpacing: "-0.5px",
+    fontWeight: 400,
+    fontSize: "20px",
+    lineHeight: "140%",
+    letterSpacing: "0%",
   },
   subtitle: {
-    fontWeight: 600,
-    fontSize: "36px",
-    lineHeight: "44px",
-    letterSpacing: "-0.5px",
+    fontWeight: 400,
+    fontSize: "17px",
+    lineHeight: "130%",
+    letterSpacing: "0%",
   },
   body1: {
-    fontWeight: 600,
-    fontSize: "32px",
-    lineHeight: "38px",
-    letterSpacing: "-0.5px",
+    fontWeight: 400,
+    fontSize: "15px",
+    lineHeight: "140%",
+    letterSpacing: "0%",
   },
   body2: {
-    fontWeight: 600,
-    fontSize: "28px",
-    lineHeight: "36px",
-    letterSpacing: "-0.5px",
+    fontWeight: 400,
+    fontSize: "15px",
+    lineHeight: "130%",
+    letterSpacing: "0%",
   },
   body3: {
     fontWeight: 400,
-    fontSize: "24px",
-    lineHeight: "36px",
-    letterSpacing: "-0.5px",
+    fontSize: "13px",
+    lineHeight: "130%",
+    letterSpacing: "0%",
   },
 };
 
