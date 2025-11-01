@@ -1,0 +1,97 @@
+:root {
+  --white: #fff;
+  --black: #000;
+
+  --gray_950: #1a1b1d;
+  --gray_900: #242628;
+  --gray_800: #333539;
+  --gray_700: #4c4f54;
+  --gray_600: #626467;
+  --gray_500: #7e8185;
+  --gray_400: #aaadb3;
+  --gray_300: #d4d6d9;
+  --gray_200: #ebedf0;
+  --gray_100: #f2f3f5;
+  --gray_50: #fafafa;
+  --gray_25: #fcfcfd;
+
+  --blue_25: #f5faff;
+  --blue_50: #eff8ff;
+  --blue_100: #d1e9ff;
+  --blue_200: #b2ddff;
+  --blue_300: #84caff;
+  --blue_400: #53b1fd;
+  --blue_430: #409cff;
+  --blue_450: #4198ff;
+  --blue_500: #2e90fa;
+  --blue_600: #1570ef;
+  --blue_700: #175cd3;
+  --blue_800: #1849a9;
+  --blue_900: #194185;
+  --blue_950: #102a56;
+
+  --green_950: #053321;
+  --green_900: #054f31;
+  --green_800: #05603a;
+  --green_700: #027a48;
+  --green_600: #039855;
+  --green_500: #12b76a;
+  --green_400: #32d583;
+  --green_300: #6ce9a6;
+  --green_200: #a6f4c5;
+  --green_100: #d1fadf;
+  --green_50: #ecfdf3;
+  --green_25: #f6fef9;
+
+  --yellow_950: #4e1d09;
+  --yellow_900: #7a2e0e;
+  --yellow_800: #93370d;
+  --yellow_700: #b54708;
+  --yellow_600: #dc6803;
+  --yellow_500: #f79009;
+  --yellow_400: #ffa800;
+  --yellow_300: #fec84b;
+  --yellow_200: #fedf89;
+  --yellow_100: #fef0c7;
+  --yellow_50: #fffaeb;
+  --yellow_25: #fffcf5;
+
+  --red_950: #55160c;
+  --red_900: #7a271a;
+  --red_800: #912018;
+  --red_700: #b42318;
+  --red_600: #d92d20;
+  --red_500: #f04438;
+  --red_550: #f63b42;
+  --red_400: #ff5f55;
+  --red_300: #fda29b;
+  --red_200: #fecdca;
+  --red_100: #fee4e2;
+  --red_50: #fef3f2;
+  --red_25: #fffbfa;
+
+  --Bgray_900: #1d242d;
+  --Bgray_800: #2d3742;
+  --Bgray_700: #414b56;
+  --Bgray_600: #5c6978;
+  --Bgray_500: #708193;
+  --Bgray_400: #8e9cab;
+  --Bgray_300: #a6b3c0;
+  --Bgray_200: #c1c7d1;
+  --Bgray_100: #eaecf0;
+
+  --Ngray_770: #363a47;
+  --Ngray_800: #292a33;
+  --Ngray_900: #1f2229;
+
+  --Egray_200: #3e414b;
+  --Egray_300: #343740;
+  --Egray_400: #292b33;
+  --Egray_500: #1f2026;
+
+  --blue_430_32: rgba(64, 156, 255, 0.32);
+  --blue_430_20: rgba(64, 156, 255, 0.2);
+  --blue_430_15: rgba(64, 156, 255, 0.15);
+  --blue_430_10: rgba(64, 156, 255, 0.1);
+  --blue_430_5: rgba(64, 156, 255, 0.05);
+}
