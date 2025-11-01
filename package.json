@@ -20,7 +20,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
-    "styled-components": "^6.1.19",
+    "styled-components": "6",
+    "styled-reset": "^5.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
