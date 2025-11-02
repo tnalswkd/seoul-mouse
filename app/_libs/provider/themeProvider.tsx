@@ -8,6 +8,7 @@ import "@/app/_styles/theme.css";
 
 const GlobalStyle = createGlobalStyle`
   body {
+    background-color: var(--bg);
     font-family: 'Pretendard','Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
 `;
