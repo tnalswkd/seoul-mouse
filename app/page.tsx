@@ -5,8 +5,11 @@ import titleSvg from "@/app/_assets/illust/title.png";
 import introImage from "@/app/_assets/illust/intro.png";
 import { Button } from "@/app/_components/Button";
 import Typography from "@/app/_components/Typography";
+import { useRouter } from "next/navigation";
 
 export default function IntroPage() {
+  const router = useRouter();
+
   return (
     <S.Container>
       <S.TitleWrapper>
@@ -31,6 +34,7 @@ export default function IntroPage() {
             variant="dark"
             subtext="지금까지 321명이 알아봤어요"
             width="282px"
+            onClick={() => router.push("/type-select")}
           >
             부탁하쥐
           </Button>
