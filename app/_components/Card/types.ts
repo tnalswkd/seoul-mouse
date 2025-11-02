@@ -31,5 +31,10 @@ const cardPropDefs = {
 };
 
 export { cardPropDefs };
-export type { CardProps, CardBaseProps, CardOwnProps, Variants, StyledCardProps };
-
+export type {
+  CardProps,
+  CardBaseProps,
+  CardOwnProps,
+  Variants,
+  StyledCardProps,
+};
