@@ -5,6 +5,7 @@ import { Button } from "./_components/Button";
 import { Counter } from "./_components/Counter";
 import { useState } from "react";
 import { Card } from "./_components/Card";
+import { Snackbar } from "./_components/Snackbar";
 
 const Text = styled.span`
   color: var(--sub_9);
@@ -26,6 +27,7 @@ const ComponentWrapper = styled.div`
 
 export default function Home() {
   const [count, setCount] = useState(100);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:white">
@@ -47,8 +49,12 @@ export default function Home() {
             >
               부탁하쥐
             </Button>
-            <Button variant="default" width="100%">
-              부탁하쥐
+            <Button
+              variant="default"
+              width="100%"
+              onClick={() => setSnackbarOpen(true)}
+            >
+              스낵바 보기
             </Button>
             <Counter
               variant="default"
@@ -63,9 +69,18 @@ export default function Home() {
               numberTags={[1, 2, 3]}
               tags={["지하철역", "지하철역", "지하철역"]}
             />
+            <Button variant="dark" width="100%">
+              다음
+            </Button>
           </ComponentWrapper>
         </main>
       </MobileWrapper>
+      <Snackbar
+        message="18평 이상은 '투룸+'으로 선택해야 해요."
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={() => setSnackbarOpen(false)}
+      />
     </div>
   );
 }
