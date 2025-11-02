@@ -1,86 +1,87 @@
 "use client";
 import styled from "styled-components";
-import { Grid } from "./_components/Grid";
-import { Button } from "./_components/Button";
-import { Counter } from "./_components/Counter";
-import { useState } from "react";
-import { Card } from "./_components/Card";
-import { Snackbar } from "./_components/Snackbar";
+import Image from "next/image";
+import titleSvg from "@/app/_assets/illust/title.png";
+import introImage from "@/app/_assets/illust/intro.png";
+import { Button } from "@/app/_components/Button";
+import Typography from "@/app/_components/Typography";
 
-const Text = styled.span`
-  color: var(--sub_9);
-  font-size: 20px;
-`;
-
-const MobileWrapper = styled.div`
-  max-width: 375px;
-  width: 100%;
-  margin: 0 auto;
-`;
-
-const ComponentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 24px;
-`;
-
-export default function Home() {
-  const [count, setCount] = useState(100);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-
+export default function IntroPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:white">
-      <MobileWrapper>
-        <main className="flex min-h-screen w-full flex-col py-32 bg-white dark:white">
-          <ComponentWrapper>
-            <Grid.Container>
-              <Grid.Item xs={4} md={4} lg={3} xl={3}>
-                콘텐츠 1
-              </Grid.Item>
-              <Grid.Item xs={4} md={4} lg={3} xl={3}>
-                콘텐츠 2
-              </Grid.Item>
-            </Grid.Container>
-            <Button
-              variant="dark"
-              subtext="지금까지 321명이 알아봤어요"
-              width="100%"
-            >
-              부탁하쥐
-            </Button>
-            <Button
-              variant="default"
-              width="100%"
-              onClick={() => setSnackbarOpen(true)}
-            >
-              스낵바 보기
-            </Button>
-            <Counter
-              variant="default"
-              value={count}
-              onChange={setCount}
-              min={0}
-              max={999}
-            />
-            <Card
-              title="자치구"
-              description="구에 대한 간단 설명"
-              numberTags={[1, 2, 3]}
-              tags={["지하철역", "지하철역", "지하철역"]}
-            />
-            <Button variant="dark" width="100%">
-              다음
-            </Button>
-          </ComponentWrapper>
-        </main>
-      </MobileWrapper>
-      <Snackbar
-        message="18평 이상은 '투룸+'으로 선택해야 해요."
-        open={snackbarOpen}
-        autoHideDuration={3000}
-        onClose={() => setSnackbarOpen(false)}
-      />
-    </div>
+    <S.Container>
+      <S.TitleWrapper>
+        <Image src={titleSvg} alt="서울살쥐" width={186} height={83} priority />
+      </S.TitleWrapper>
+
+      <S.Subtitle style={{ whiteSpace: "nowrap" }}>
+        <Typography variant="title" color="black">
+          서울 물가를 모르는 지방러들을 위한
+          <br />
+          맞춤형 AI 집 찾기 도우미
+        </Typography>
+      </S.Subtitle>
+
+      <S.ChatImageContainer>
+        <S.ChatImageWrapper>
+          <Image src={introImage} width={337} height={561} alt="채팅 화면" />
+        </S.ChatImageWrapper>
+
+        <S.ButtonWrapper>
+          <Button
+            variant="dark"
+            subtext="지금까지 321명이 알아봤어요"
+            width="282px"
+          >
+            부탁하쥐
+          </Button>
+        </S.ButtonWrapper>
+      </S.ChatImageContainer>
+    </S.Container>
   );
 }
+
+const S = {
+  Container: styled.div`
+    width: 375px;
+    min-height: 100vh;
+    background-color: var(--bg);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+  `,
+  TitleWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin-top: 83px;
+  `,
+  Subtitle: styled.div`
+    width: 260px;
+    text-align: center;
+    z-index: 1;
+  `,
+  ChatImageWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+  `,
+  ChatImageContainer: styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 13px;
+  `,
+  ButtonWrapper: styled.div`
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+  `,
+};
