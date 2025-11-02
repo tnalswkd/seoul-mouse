@@ -54,6 +54,7 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
     min = 0,
     max = 999,
     onChange,
+    placeholder,
     ...divProps
   } = props;
 
@@ -103,8 +104,8 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (inputValue === "") {
-      // 빈 값일 때는 min 값으로 설정
-      const newValue = min;
+      // 빈 값일 때는 0으로 설정 (placeholder를 표시하기 위해)
+      const newValue = 0;
       if (value === undefined) {
         setInternalValue(newValue);
       }
@@ -144,7 +145,8 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
       <S.Input
         ref={inputRef}
         type="text"
-        value={currentValue}
+        value={currentValue === 0 && placeholder ? "" : currentValue}
+        placeholder={placeholder}
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}

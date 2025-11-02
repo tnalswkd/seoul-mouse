@@ -11,6 +11,7 @@ type CounterOwnProps = {
   min?: number;
   max?: number;
   onChange?: (value: number) => void;
+  placeholder?: string;
 };
 
 type CounterBaseProps = GetPropDefTypes<typeof counterPropDefs>;
