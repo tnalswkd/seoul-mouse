@@ -42,18 +42,7 @@ export const variants: Record<
 };
 
 const typography = {
-  fontFamily: [
-    "Pretendard",
-    "Pretendard Regular",
-    "Pretendard Black",
-    "Pretendard Bold",
-    "Pretendard ExtraBold",
-    "Pretendard ExtraLight",
-    "Pretendard Light",
-    "Pretendard Medium",
-    "Pretendard SemiBold",
-    "Pretendard Thin",
-  ].join(","),
+  fontFamily: "Gangwon, sans-serif",
   htmlFontSize: 10,
   letterSpacing: "-0.5px",
   ...variants,
