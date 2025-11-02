@@ -20,6 +20,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
+    "figma-developer-mcp": "^0.6.4",
+    "sharp": "^0.34.4",
     "styled-components": "6",
     "styled-reset": "^5.0.0",
     "tailwindcss": "^4",
