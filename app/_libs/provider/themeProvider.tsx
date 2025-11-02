@@ -1,6 +1,6 @@
 "use client";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
-import { PaletteMode, theme } from "../../_styles/theme";
+import { PaletteMode, theme } from "@/app/_styles/theme";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Reset } from "styled-reset";
 
