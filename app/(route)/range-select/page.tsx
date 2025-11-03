@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
@@ -30,7 +30,6 @@ export default function RangeSelectPage() {
   const housingType = searchParams.get("housingType") as HousingType;
   const contractType = searchParams.get("contractType") as ContractType;
 
-  // 보증금 선택 (만원 단위)
   const [selectedDepositFirst, setSelectedDepositFirst] = useState<
     string | null
   >(null);
@@ -40,7 +39,6 @@ export default function RangeSelectPage() {
   const [depositMinValue, setDepositMinValue] = useState(0);
   const [depositMaxValue, setDepositMaxValue] = useState(0);
 
-  // 월세 선택 (만원 단위) - 월세일 때만
   const [selectedMonthlyFirst, setSelectedMonthlyFirst] = useState<
     string | null
   >(null);
@@ -50,7 +48,6 @@ export default function RangeSelectPage() {
   const [monthlyMinValue, setMonthlyMinValue] = useState(0);
   const [monthlyMaxValue, setMonthlyMaxValue] = useState(0);
 
-  // 평수 선택
   const [selectedAreaFirst, setSelectedAreaFirst] = useState<string | null>(
     null
   );
@@ -60,10 +57,38 @@ export default function RangeSelectPage() {
   const [areaMinValue, setAreaMinValue] = useState(0);
   const [areaMaxValue, setAreaMaxValue] = useState(0);
 
-  const depositOptions = {
-    row1: ["~5천", "6천", "7천", "8천", "9천"],
-    row2: ["1억", "2억", "3억", "4억", "5억~"],
+  // 주택 유형에 따른 보증금 옵션
+  const getDepositOptions = (type: HousingType) => {
+    switch (type) {
+      case "apartment":
+      case "office":
+        return {
+          row1: ["~5천", "6천", "7천", "8천", "9천"],
+          row2: ["1억", "2억", "3억", "4억", "5억~"],
+        };
+      case "oneroom":
+      case "tworoom":
+        return {
+          row1: ["100", "300", "500", "800", "1천"],
+          row2: ["2천", "3천", "4천", "5천", "1억~"],
+        };
+      default:
+        return {
+          row1: ["100", "300", "500", "800", "1천"],
+          row2: ["2천", "3천", "4천", "5천", "1억~"],
+        };
+    }
   };
+
+  const depositOptions = getDepositOptions(housingType);
+
+  // 주택 유형이 변경되면 선택된 값들 초기화
+  useEffect(() => {
+    setSelectedDepositFirst(null);
+    setSelectedDepositSecond(null);
+    setDepositMinValue(0);
+    setDepositMaxValue(0);
+  }, [housingType]);
 
   const monthlyOptions = {
     row1: ["10", "20", "30", "40", "50"],
@@ -83,12 +108,19 @@ export default function RangeSelectPage() {
         return num * 1000; // 천만원 단위
       }
       if (value.includes("억")) {
-        const num = parseInt(value.replace("억", "").replace("~", ""));
-        return num * 10000; // 억 단위 (만원)
+        // "1.5억" 같은 경우 처리
+        const numStr = value.replace("억", "").replace("~", "");
+        const num = parseFloat(numStr);
+        return Math.round(num * 10000); // 억 단위 (만원)
       }
       if (value.startsWith("~")) {
         const num = parseInt(value.replace("~", "").replace("천", ""));
         return num * 1000;
+      }
+      // 숫자만 있는 경우 (만원 단위)
+      const num = parseInt(value);
+      if (!isNaN(num)) {
+        return num;
       }
     } else if (type === "monthly" || type === "area") {
       if (value.includes("~")) {
