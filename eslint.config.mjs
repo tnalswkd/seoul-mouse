@@ -8,6 +8,9 @@ export default defineConfig([
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 
   {
+    plugins: {
+      "react-hooks": reactHooks,
+    },
     rules: {
       "@next/next/no-img-element": "off",
 
