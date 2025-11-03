@@ -12,6 +12,7 @@ type CounterOwnProps = {
   max?: number;
   onChange?: (value: number) => void;
   placeholder?: string;
+  width?: string | number;
 };
 
 type CounterBaseProps = GetPropDefTypes<typeof counterPropDefs>;
@@ -20,7 +21,7 @@ type CounterProps = Omit<ComponentPropsWithoutRef<"div">, "onChange"> &
   CounterBaseProps &
   CounterOwnProps;
 
-type StyledCounterProps = Pick<CounterProps, "variant" | "disabled">;
+type StyledCounterProps = Pick<CounterProps, "variant" | "disabled" | "width">;
 
 const counterPropDefs = {
   variant: {

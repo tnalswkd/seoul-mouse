@@ -8,7 +8,7 @@ import minusIcon from "@/app/_assets/icon/ic_minus.png";
 import plusIcon from "@/app/_assets/icon/ic_plus.png";
 
 function getVariantStyles(props: StyledCounterProps) {
-  const { variant, disabled } = props;
+  const { variant, disabled, width } = props;
 
   const baseStyles = {
     backgroundColor: "#F3F3F3",
@@ -20,7 +20,10 @@ function getVariantStyles(props: StyledCounterProps) {
     border: "none",
     cursor: disabled ? "not-allowed" : "default",
     userSelect: "none" as const,
-    width: "fit-content",
+    width: width ?? "fit-content",
+    minWidth: "fit-content",
+    boxSizing: "border-box" as const,
+    overflow: "visible" as const,
   };
 
   switch (variant) {
@@ -54,6 +57,7 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
     min = 0,
     max = 999,
     onChange,
+    width,
     ...divProps
   } = props;
 
@@ -133,6 +137,7 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
       ref={ref}
       variant={currentVariant}
       disabled={disabled}
+      width={width}
     >
       <S.IconButton
         onClick={handleDecrease}
@@ -172,14 +177,22 @@ const S = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "24px",
-    height: "24px",
+    width: "clamp(20px, 6.4vw, 24px)",
+    height: "clamp(20px, 6.4vw, 24px)",
+    minWidth: "20px",
+    minHeight: "20px",
     padding: 0,
     border: "none",
     background: "transparent",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.5 : 1,
     transition: "opacity 0.2s",
+    flexShrink: 0,
+    "& img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "contain",
+    },
     "&:hover": {
       opacity: disabled ? 0.5 : 0.8,
     },
@@ -193,8 +206,6 @@ const S = {
     fontWeight: 400,
     fontSize: "17px",
     lineHeight: "130%",
-    width: "auto",
-    minWidth: "fit-content",
     color: variant === "default" ? "#919191" : "#161616",
     backgroundColor: "transparent",
     border: "none",
@@ -202,8 +213,9 @@ const S = {
     textAlign: "center",
     padding: 0,
     cursor: disabled ? "not-allowed" : "text",
-    flexShrink: 0,
-    // input의 기본 크기 조정 방지
+    flex: 1,
+    minWidth: 0,
+
     appearance: "none",
     MozAppearance: "textfield",
     "&::-webkit-outer-spin-button": {
