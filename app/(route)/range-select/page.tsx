@@ -411,7 +411,9 @@ export default function RangeSelectPage() {
             min={0}
             max={9999}
             placeholder="최소"
+            width="100%"
           />
+
           <Typography variant="title" color="black">
             ~
           </Typography>
@@ -422,6 +424,7 @@ export default function RangeSelectPage() {
             min={0}
             max={9999}
             placeholder="최대"
+            width="100%"
           />
         </S.CounterRow>
       </S.Section>
@@ -556,6 +559,7 @@ export default function RangeSelectPage() {
               min={0}
               max={999}
               placeholder="최소"
+              width="100%"
             />
             <Typography variant="title" color="black">
               ~
@@ -567,6 +571,7 @@ export default function RangeSelectPage() {
               min={0}
               max={999}
               placeholder="최대"
+              width="100%"
             />
           </S.CounterRow>
         </S.Section>
@@ -692,6 +697,7 @@ export default function RangeSelectPage() {
             min={0}
             max={999}
             placeholder="최소"
+            width="100%"
           />
           <Typography variant="title" color="black">
             ~
@@ -703,6 +709,7 @@ export default function RangeSelectPage() {
             min={0}
             max={999}
             placeholder="최대"
+            width="100%"
           />
         </S.CounterRow>
       </S.Section>
@@ -728,7 +735,7 @@ const S = {
     min-height: 100vh;
     background-color: var(--bg);
     margin: 0 auto;
-    padding: 16px 0px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -861,16 +868,20 @@ const S = {
   `,
 
   CounterRow: styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
     padding: 0;
-    width: 100%;
 
     > div {
       flex: 1;
-      max-width: 150.5px;
+      min-width: 0;
+    }
+
+    > span {
+      flex-shrink: 0;
     }
   `,
 
