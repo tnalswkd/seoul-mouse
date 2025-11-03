@@ -7,9 +7,10 @@ import Typography from "@/app/_components/Typography";
 import { Button } from "@/app/_components/Button";
 import { Counter } from "@/app/_components/Counter";
 
+import { getDepositOptions, type HousingType } from "./options";
+
 import icChevronLeft from "@/app/_assets/icon/ic_chevron-left.png";
 
-type HousingType = "apartment" | "office" | "oneroom" | "tworoom" | null;
 type ContractType = "jeonse" | "wolse" | null;
 
 const housingTypeLabels: Record<string, string> = {
@@ -56,29 +57,6 @@ export default function RangeSelectPage() {
   );
   const [areaMinValue, setAreaMinValue] = useState(0);
   const [areaMaxValue, setAreaMaxValue] = useState(0);
-
-  // 주택 유형에 따른 보증금 옵션
-  const getDepositOptions = (type: HousingType) => {
-    switch (type) {
-      case "apartment":
-      case "office":
-        return {
-          row1: ["~5천", "6천", "7천", "8천", "9천"],
-          row2: ["1억", "2억", "3억", "4억", "5억~"],
-        };
-      case "oneroom":
-      case "tworoom":
-        return {
-          row1: ["100", "300", "500", "800", "1천"],
-          row2: ["2천", "3천", "4천", "5천", "1억~"],
-        };
-      default:
-        return {
-          row1: ["100", "300", "500", "800", "1천"],
-          row2: ["2천", "3천", "4천", "5천", "1억~"],
-        };
-    }
-  };
 
   const depositOptions = getDepositOptions(housingType);
 
