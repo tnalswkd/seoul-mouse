@@ -58,6 +58,7 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
     max = 999,
     onChange,
     width,
+    placeholder,
     ...divProps
   } = props;
 
@@ -149,7 +150,8 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>((props, ref) => {
       <S.Input
         ref={inputRef}
         type="text"
-        value={currentValue}
+        value={currentValue === 0 && placeholder ? "" : currentValue}
+        placeholder={placeholder}
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
