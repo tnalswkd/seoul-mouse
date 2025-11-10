@@ -243,8 +243,20 @@ export default function RangeSelectPage() {
   };
 
   const handleNext = () => {
-    // TODO: 다음 페이지로 이동
-    console.log("다음 페이지로 이동");
+    if (!housingType || !contractType) return;
+
+    const params = new URLSearchParams({
+      housingType: housingType,
+      contractType: contractType,
+      depositMin: depositMinValue.toString(),
+      depositMax: depositMaxValue.toString(),
+      monthlyMin: monthlyMinValue.toString(),
+      monthlyMax: monthlyMaxValue.toString(),
+      areaMin: areaMinValue.toString(),
+      areaMax: areaMaxValue.toString(),
+    });
+
+    router.push(`/loading?${params.toString()}`);
   };
 
   const isFormValid = () => {
