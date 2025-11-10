@@ -3,7 +3,6 @@
 import styled from "styled-components";
 import Image from "next/image";
 import mapDefault from "@/app/_assets/illust/map_default.png";
-
 import gangnam from "@/app/_assets/illust/map/gangnam.png";
 import gangdong from "@/app/_assets/illust/map/gangdong.png";
 import gangbuk from "@/app/_assets/illust/map/gangbuk.png";
@@ -135,5 +134,7 @@ const S = {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.9;
   `,
 };
