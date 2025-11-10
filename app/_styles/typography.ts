@@ -7,6 +7,7 @@ export const variants: Record<
     fontSize?: string;
     lineHeight?: string;
     letterSpacing?: string;
+    fontFamily?: string;
   }
 > = {
   title: {
@@ -14,30 +15,35 @@ export const variants: Record<
     fontSize: "20px",
     lineHeight: "140%",
     letterSpacing: "0%",
+    fontFamily: "var(--font-gangwon-bold)",
   },
   subtitle: {
     fontWeight: 400,
     fontSize: "17px",
     lineHeight: "130%",
     letterSpacing: "0%",
+    fontFamily: "var(--font-gangwon-bold)",
   },
   body1: {
     fontWeight: 400,
     fontSize: "15px",
     lineHeight: "140%",
     letterSpacing: "0%",
+    fontFamily: "var(--font-gangwon-light)",
   },
   body2: {
     fontWeight: 400,
     fontSize: "15px",
     lineHeight: "130%",
     letterSpacing: "0%",
+    fontFamily: "var(--font-gangwon-light)",
   },
   body3: {
     fontWeight: 400,
     fontSize: "13px",
     lineHeight: "130%",
     letterSpacing: "0%",
+    fontFamily: "var(--font-gangwon-light)",
   },
 };
 

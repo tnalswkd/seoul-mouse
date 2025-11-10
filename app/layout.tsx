@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import StyledComponentsRegistry from "./_libs/provider/StyledComponentsRegistry";
 import ThemeContextProvider from "./_libs/provider/themeProvider";
@@ -12,6 +13,30 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const gangwonBold = localFont({
+  src: [
+    {
+      path: "../public/fonts/gangwon-bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gangwon-bold",
+  display: "swap",
+});
+
+const gangwonLight = localFont({
+  src: [
+    {
+      path: "../public/fonts/gangwon-light.otf",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gangwon-light",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${gangwonBold.variable} ${gangwonLight.variable} antialiased`}
       >
         <StyledComponentsRegistry>
           <ThemeContextProvider>{children}</ThemeContextProvider>
