@@ -223,7 +223,7 @@ export default function ResultPage() {
 
         <S.ButtonWrapper>
           <Button variant="dark" width="100%" onClick={handleRetry}>
-            다시 찾기
+            다시 찾쥐
           </Button>
         </S.ButtonWrapper>
       </S.ScrollContent>
@@ -270,26 +270,21 @@ const S = {
 
   Container: styled.div`
     width: 375px;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--bg);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   `,
 
   MapSection: styled.div`
     width: 100%;
     height: 320px;
-    flex-shrink: 0;
     background-color: var(--white);
     position: relative;
-    border-bottom: 1px solid var(--line);
   `,
 
   ScrollContent: styled.div`
-    flex: 1;
-    overflow-y: auto;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -314,10 +309,6 @@ const S = {
 
   ButtonWrapper: styled.div`
     margin-top: 8px;
-    padding-top: 8px;
     width: 100%;
-    position: sticky;
-    bottom: 0;
-    padding-bottom: 16px;
   `,
 };
