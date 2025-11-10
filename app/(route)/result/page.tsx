@@ -169,7 +169,7 @@ export default function ResultPage() {
             </Typography>
           </S.TextWrapper>
           <Button variant="dark" width="200px" onClick={handleRetry}>
-            다시 찾기
+            다시 찾쥐
           </Button>
         </S.LoadingWrapper>
       </S.LoadingContainer>
@@ -318,7 +318,6 @@ const S = {
     width: 100%;
     position: sticky;
     bottom: 0;
-    background-color: var(--bg);
     padding-bottom: 16px;
   `,
 };
