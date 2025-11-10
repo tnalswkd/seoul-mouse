@@ -1,41 +1,77 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
 import Typography from "@/app/_components/Typography";
 import loadingImage from "@/app/_assets/illust/loading.png";
+import { getRecommendations } from "@/app/_libs/api/recommend";
 
 export default function LoadingPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // 2초 후 결과 페이지로 이동
-    const timer = setTimeout(() => {
-      router.push(`/result?${searchParams.toString()}`);
-    }, 2000);
+    const fetchRecommendations = async () => {
+      try {
+        const params = {
+          housingType: searchParams.get("housingType") || "",
+          contractType: searchParams.get("contractType") || "",
+          depositMin: Number(searchParams.get("depositMin")) || 0,
+          depositMax: Number(searchParams.get("depositMax")) || 0,
+          monthlyMin: Number(searchParams.get("monthlyMin")) || 0,
+          monthlyMax: Number(searchParams.get("monthlyMax")) || 0,
+          areaMin: Number(searchParams.get("areaMin")) || 0,
+          areaMax: Number(searchParams.get("areaMax")) || 0,
+        };
 
-    return () => clearTimeout(timer);
+        const recommendations = await getRecommendations(params);
+
+        // 결과를 localStorage에 저장
+        localStorage.setItem(
+          "recommendations",
+          JSON.stringify(recommendations)
+        );
+
+        // 결과 페이지로 이동
+        router.push(`/result?${searchParams.toString()}`);
+      } catch (err) {
+        console.error("API 호출 실패:", err);
+        setError("추천 결과를 불러오는데 실패했습니다.");
+      }
+    };
+
+    fetchRecommendations();
   }, [router, searchParams]);
 
   return (
     <S.Container>
       <S.LoadingWrapper>
-        <S.Spinner>
-          <Image
-            src={loadingImage}
-            alt="로딩중"
-            width={120}
-            height={120}
-            priority
-          />
-        </S.Spinner>
-        <S.TextWrapper>
-          <Typography variant="title" color="black">
-            너한테 맞는 서울을 둘러보는쥥
-          </Typography>
-        </S.TextWrapper>
+        {error ? (
+          <S.TextWrapper>
+            <Typography variant="title" color="black">
+              {error}
+            </Typography>
+          </S.TextWrapper>
+        ) : (
+          <>
+            <S.Spinner>
+              <Image
+                src={loadingImage}
+                alt="로딩중"
+                width={120}
+                height={120}
+                priority
+              />
+            </S.Spinner>
+            <S.TextWrapper>
+              <Typography variant="title" color="black">
+                너한테 맞는 서울을 둘러보는쥥
+              </Typography>
+            </S.TextWrapper>
+          </>
+        )}
       </S.LoadingWrapper>
     </S.Container>
   );
