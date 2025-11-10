@@ -65,7 +65,13 @@ export async function getRecommendations(
   });
 
   if (!response.ok) {
-    throw new Error(`API 요청 실패: ${response.status} ${response.statusText}`);
+    try {
+      const errorData = await response.json();
+      const errorMessage = errorData.detail || `API 요청 실패: ${response.status}`;
+      throw new Error(errorMessage);
+    } catch (parseError) {
+      throw new Error(`API 요청 실패: ${response.status} ${response.statusText}`);
+    }
   }
 
   const data: RecommendResponse = await response.json();
