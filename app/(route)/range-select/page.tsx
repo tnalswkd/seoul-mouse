@@ -256,7 +256,7 @@ export default function RangeSelectPage() {
       areaMax: areaMaxValue.toString(),
     });
 
-    router.push(`/loading?${params.toString()}`);
+    router.push(`/result?${params.toString()}`);
   };
 
   const isFormValid = () => {
