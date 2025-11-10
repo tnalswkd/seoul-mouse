@@ -1,12 +1,36 @@
 "use client";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import styled from "styled-components";
+import Image from "next/image";
 import Typography from "@/app/_components/Typography";
+import loadingImage from "@/app/_assets/illust/loading.png";
 
 export default function LoadingPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // 2초 후 결과 페이지로 이동
+    const timer = setTimeout(() => {
+      router.push(`/result?${searchParams.toString()}`);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [router, searchParams]);
+
   return (
     <S.Container>
       <S.LoadingWrapper>
-        <S.Spinner>쥐 들어가야함</S.Spinner>
+        <S.Spinner>
+          <Image
+            src={loadingImage}
+            alt="로딩중"
+            width={120}
+            height={120}
+            priority
+          />
+        </S.Spinner>
         <S.TextWrapper>
           <Typography variant="title" color="black">
             너한테 맞는 서울을 둘러보는쥥
