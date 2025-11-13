@@ -12,6 +12,7 @@ const colorToken = {
   blue2: colorchip.blue2,
   yellow1: colorchip.yellow1,
   yellow2: colorchip.yellow2,
+  yellow3: colorchip.yellow3,
   sub_1: colorchip.sub_1,
   sub_2: colorchip.sub_2,
   sub_3: colorchip.sub_3,

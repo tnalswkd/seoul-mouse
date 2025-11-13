@@ -10,6 +10,7 @@ const colorchip = {
   blue2: "#c0d6ff",
   yellow1: "#fff3cd",
   yellow2: "#564200",
+  yellow3: "#f4bb00",
   sub_1: "#3356b4",
   sub_2: "#2e9c3b",
   sub_3: "#f37723",
