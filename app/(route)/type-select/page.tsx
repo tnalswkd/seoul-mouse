@@ -8,6 +8,7 @@ import Typography from "@/app/_components/Typography";
 import { Button } from "@/app/_components/Button";
 
 import icInfo from "@/app/_assets/icon/ic_info.png";
+import icChevronLeft from "@/app/_assets/icon/ic_chevron-left.png";
 import ilApartment from "@/app/_assets/illust/il_apartment.png";
 import ilOffice from "@/app/_assets/illust/il_office.png";
 import ilOneroom from "@/app/_assets/illust/il_oneroom.png";
@@ -43,6 +44,10 @@ export default function TypeSelectPage() {
     },
   ];
 
+  const handleBack = () => {
+    router.back();
+  };
+
   const handleNext = () => {
     if (!selectedHousingType || !selectedContractType) return;
 
@@ -56,6 +61,13 @@ export default function TypeSelectPage() {
 
   return (
     <S.Container>
+      {/* 헤더 */}
+      <S.Header>
+        <S.BackButton onClick={handleBack}>
+          <Image src={icChevronLeft} alt="뒤로가기" width={48} height={48} />
+        </S.BackButton>
+      </S.Header>
+
       {/* 주거 형태 섹션 */}
       <S.Section>
         <div
@@ -157,12 +169,34 @@ const S = {
     min-height: 100vh;
     background-color: var(--bg);
     margin: 0 auto;
-    padding: 16px 0px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
   `,
+
+  Header: styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    position: relative;
+  `,
+
+  BackButton: styled.button`
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 6px 9px;
+  `,
+
   Section: styled.div`
     width: 100%;
     display: flex;
