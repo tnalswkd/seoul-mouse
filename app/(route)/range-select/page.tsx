@@ -290,7 +290,7 @@ export default function RangeSelectPage() {
       {/* 헤더 */}
       <S.Header>
         <S.BackButton onClick={handleBack}>
-          <Image src={icChevronLeft} alt="뒤로가기" width={6} height={12} />
+          <Image src={icChevronLeft} alt="뒤로가기" width={48} height={48} />
         </S.BackButton>
         <S.Tag>{displayTag}</S.Tag>
       </S.Header>
@@ -788,7 +788,8 @@ const S = {
   Tag: styled.div`
     position: absolute;
     left: 48px;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
