@@ -362,7 +362,7 @@ export default function RangeSelectPage() {
                         isFirstSelected || isSecondSelected
                           ? "#FFFFFF"
                           : isRangeMiddle
-                          ? "#4183FF"
+                          ? "#564200"
                           : "#161616",
                     }}
                   >
@@ -413,7 +413,7 @@ export default function RangeSelectPage() {
                         isFirstSelected || isSecondSelected
                           ? "#FFFFFF"
                           : isRangeMiddle
-                          ? "#4183FF"
+                          ? "#564200"
                           : "#161616",
                     }}
                   >
@@ -510,7 +510,7 @@ export default function RangeSelectPage() {
                           isFirstSelected || isSecondSelected
                             ? "#FFFFFF"
                             : isRangeMiddle
-                            ? "#4183FF"
+                            ? "#564200"
                             : "#161616",
                       }}
                     >
@@ -561,7 +561,7 @@ export default function RangeSelectPage() {
                           isFirstSelected || isSecondSelected
                             ? "#FFFFFF"
                             : isRangeMiddle
-                            ? "#4183FF"
+                            ? "#564200"
                             : "#161616",
                       }}
                     >
@@ -651,7 +651,7 @@ export default function RangeSelectPage() {
                         isFirstSelected || isSecondSelected
                           ? "#FFFFFF"
                           : isRangeMiddle
-                          ? "#4183FF"
+                          ? "#564200"
                           : "#161616",
                     }}
                   >
@@ -699,7 +699,7 @@ export default function RangeSelectPage() {
                         isFirstSelected || isSecondSelected
                           ? "#FFFFFF"
                           : isRangeMiddle
-                          ? "#4183FF"
+                          ? "#564200"
                           : "#161616",
                     }}
                   >
@@ -853,9 +853,9 @@ const S = {
     border-right: ${(props) =>
       props.$isLast ? "1px solid var(--line)" : "none"};
     background-color: ${(props) => {
-      if (props.$selected) return "#4183FF"; // 첫 번째 선택: 파란색
-      if (props.$selectedSecond) return "#4183FF"; // 두 번째 선택: 파란색 (진한 색상)
-      if (props.$isInRange) return "#C0D6FF"; // 범위 내: 연한 파란색
+      if (props.$selected) return "#F4BB00"; // 첫 번째 선택: 노란색
+      if (props.$selectedSecond) return "#F4BB00"; // 두 번째 선택: 노란색
+      if (props.$isInRange) return "#FFF3CD"; // 범위 내: 연한 노란색
       return "var(--white)";
     }};
     border-radius: ${(props) => {
@@ -873,8 +873,8 @@ const S = {
 
     &:hover {
       background-color: ${(props) => {
-        if (props.$selected || props.$selectedSecond) return "#4183FF";
-        if (props.$isInRange) return "#C0D6FF";
+        if (props.$selected || props.$selectedSecond) return "#F4BB00";
+        if (props.$isInRange) return "#FFF3CD";
         return "#f9f9f9";
       }};
     }
@@ -883,7 +883,7 @@ const S = {
       (props.$selected || props.$selectedSecond || props.$isInRange) &&
       `
       border-color: ${
-        props.$selected || props.$selectedSecond ? "#4183FF" : "#C0D6FF"
+        props.$selected || props.$selectedSecond ? "#F4BB00" : "#FFF3CD"
       };
       border-width: 1px;
       z-index: 1;
