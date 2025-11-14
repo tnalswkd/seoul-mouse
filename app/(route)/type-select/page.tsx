@@ -165,19 +165,21 @@ export default function TypeSelectPage() {
 
 const S = {
   Container: styled.div`
-    width: 375px;
+    width: 100%;
+    max-width: 375px;
     min-height: 100vh;
     background-color: var(--bg);
     margin: 0 auto;
-    padding: 16px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
+    /* padding: 16px; */
   `,
 
   Header: styled.div`
     width: 100%;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     gap: 0;
@@ -188,17 +190,18 @@ const S = {
   BackButton: styled.button`
     width: 48px;
     height: 48px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     background: transparent;
     cursor: pointer;
-    padding: 6px 9px;
   `,
 
   Section: styled.div`
     width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -219,7 +222,8 @@ const S = {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 14px 63px;
+    padding: 14px 16px;
+    min-height: 120px;
     border: 1px solid
       ${(props) => (props.$selected ? "var(--black)" : "var(--line)")};
     border-radius: 12px;
@@ -255,7 +259,8 @@ const S = {
     flex-direction: column;
     justify-content: center;
     gap: 2px;
-    padding: 16px 12px;
+    padding: 20px 16px;
+    min-height: 100px;
     border: 1px solid
       ${(props) => (props.$selected ? "var(--black)" : "var(--line)")};
     border-radius: 12px;
@@ -263,6 +268,8 @@ const S = {
     cursor: pointer;
     transition: all 0.2s;
     text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 
     &:hover {
       border-color: var(--black);
@@ -273,6 +280,7 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    width: 100%;
   `,
 
   NextButtonWrapper: styled.div`
@@ -280,5 +288,6 @@ const S = {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-bottom: 40px;
   `,
 };
