@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
@@ -25,7 +25,7 @@ const contractTypeLabels: Record<string, string> = {
   wolse: "월세",
 };
 
-export default function RangeSelectPage() {
+function RangeSelectPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const housingType = searchParams.get("housingType") as HousingType;
@@ -914,4 +914,27 @@ const S = {
     justify-content: center;
     width: 100%;
   `,
+
+  LoadingWrapper: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  `,
 };
+
+export default function RangeSelectPage() {
+  return (
+    <Suspense fallback={
+      <S.Container>
+        <S.LoadingWrapper>
+          <Typography variant="title" color="black">
+            로딩 중...
+          </Typography>
+        </S.LoadingWrapper>
+      </S.Container>
+    }>
+      <RangeSelectPageContent />
+    </Suspense>
+  );
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
@@ -57,7 +57,7 @@ const contractTypeLabels: Record<string, string> = {
   wolse: "월세",
 };
 
-export default function ResultPage() {
+function ResultPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [recommendations, setRecommendations] = useState<
@@ -312,3 +312,30 @@ const S = {
     width: 100%;
   `,
 };
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={
+      <S.LoadingContainer>
+        <S.LoadingWrapper>
+          <S.Spinner>
+            <Image
+              src={loadingImage}
+              alt="로딩중"
+              width={120}
+              height={120}
+              priority
+            />
+          </S.Spinner>
+          <S.TextWrapper>
+            <Typography variant="title" color="black">
+              너한테 맞는 서울을 둘러보는쥥
+            </Typography>
+          </S.TextWrapper>
+        </S.LoadingWrapper>
+      </S.LoadingContainer>
+    }>
+      <ResultPageContent />
+    </Suspense>
+  );
+}
