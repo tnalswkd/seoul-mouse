@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
+import useSWR from "swr";
 import Typography from "@/app/_components/Typography";
 import loadingImage from "@/app/_assets/illust/loading.png";
 import { getRecommendations } from "@/app/_libs/api/recommend";
@@ -10,40 +11,36 @@ import { getRecommendations } from "@/app/_libs/api/recommend";
 export default function LoadingPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [error, setError] = useState<string | null>(null);
+
+  const params = {
+    housingType: searchParams.get("housingType") || "",
+    contractType: searchParams.get("contractType") || "",
+    depositMin: Number(searchParams.get("depositMin")) || 0,
+    depositMax: Number(searchParams.get("depositMax")) || 0,
+    monthlyMin: Number(searchParams.get("monthlyMin")) || 0,
+    monthlyMax: Number(searchParams.get("monthlyMax")) || 0,
+    areaMin: Number(searchParams.get("areaMin")) || 0,
+    areaMax: Number(searchParams.get("areaMax")) || 0,
+  };
+
+  const { data, error } = useSWR(
+    ["recommendations", params],
+    () => getRecommendations(params),
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
   useEffect(() => {
-    const fetchRecommendations = async () => {
-      try {
-        const params = {
-          housingType: searchParams.get("housingType") || "",
-          contractType: searchParams.get("contractType") || "",
-          depositMin: Number(searchParams.get("depositMin")) || 0,
-          depositMax: Number(searchParams.get("depositMax")) || 0,
-          monthlyMin: Number(searchParams.get("monthlyMin")) || 0,
-          monthlyMax: Number(searchParams.get("monthlyMax")) || 0,
-          areaMin: Number(searchParams.get("areaMin")) || 0,
-          areaMax: Number(searchParams.get("areaMax")) || 0,
-        };
+    if (data) {
+      // 결과를 localStorage에 저장
+      localStorage.setItem("recommendations", JSON.stringify(data));
 
-        const recommendations = await getRecommendations(params);
-
-        // 결과를 localStorage에 저장
-        localStorage.setItem(
-          "recommendations",
-          JSON.stringify(recommendations)
-        );
-
-        // 결과 페이지로 이동
-        router.push(`/result?${searchParams.toString()}`);
-      } catch (err) {
-        console.error("API 호출 실패:", err);
-        setError("추천 결과를 불러오는데 실패했습니다.");
-      }
-    };
-
-    fetchRecommendations();
-  }, [router, searchParams]);
+      // 결과 페이지로 이동
+      router.push(`/result?${searchParams.toString()}`);
+    }
+  }, [data, router, searchParams]);
 
   return (
     <S.Container>
@@ -51,7 +48,7 @@ export default function LoadingPage() {
         {error ? (
           <S.TextWrapper>
             <Typography variant="title" color="black">
-              {error}
+              추천 결과를 불러오는데 실패했습니다.
             </Typography>
           </S.TextWrapper>
         ) : (
@@ -60,8 +57,8 @@ export default function LoadingPage() {
               <Image
                 src={loadingImage}
                 alt="로딩중"
-                width={120}
-                height={120}
+                width={205}
+                height={44}
                 priority
               />
             </S.Spinner>
@@ -96,8 +93,8 @@ const S = {
     gap: 24px;
   `,
   Spinner: styled.div`
-    width: 64px;
-    height: 64px;
+    width: 205px;
+    height: 44px;
     position: relative;
     display: flex;
     align-items: center;
