@@ -1,6 +1,22 @@
 @import "tailwindcss";
 @import "./_styles/colorChips.css";
 
+@font-face {
+  font-family: "GangwonEdu";
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/gangwon-light.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GangwonEdu";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/gangwon-bold.otf") format("opentype");
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -9,8 +25,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "GangwonEdu", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: "GangwonEdu", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,5 +39,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "GangwonEdu", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+* {
+  font-family: "GangwonEdu", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }

@@ -1,43 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 import StyledComponentsRegistry from "./_libs/provider/StyledComponentsRegistry";
 import ThemeContextProvider from "./_libs/provider/themeProvider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const gangwonBold = localFont({
-  src: [
-    {
-      path: "../public/fonts/gangwon-bold.otf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-gangwon-bold",
-  display: "swap",
-});
-
-const gangwonLight = localFont({
-  src: [
-    {
-      path: "../public/fonts/gangwon-light.otf",
-      weight: "300",
-      style: "normal",
-    },
-  ],
-  variable: "--font-gangwon-light",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "서울쥐",
@@ -80,10 +44,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${gangwonBold.variable} ${gangwonLight.variable} antialiased`}
-      >
+    <html lang="ko">
+      <body className="antialiased">
         <StyledComponentsRegistry>
           <ThemeContextProvider>{children}</ThemeContextProvider>
         </StyledComponentsRegistry>
