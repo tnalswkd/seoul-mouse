@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
@@ -108,29 +108,4 @@ const S = {
   `,
 };
 
-export default function LoadingPage() {
-  return (
-    <Suspense fallback={
-      <S.Container>
-        <S.LoadingWrapper>
-          <S.Spinner>
-            <Image
-              src={loadingImage}
-              alt="로딩중"
-              width={205}
-              height={44}
-              priority
-            />
-          </S.Spinner>
-          <S.TextWrapper>
-            <Typography variant="title" color="black">
-              너한테 맞는 서울을 둘러보는쥥
-            </Typography>
-          </S.TextWrapper>
-        </S.LoadingWrapper>
-      </S.Container>
-    }>
-      <LoadingPageContent />
-    </Suspense>
-  );
-}
+export default LoadingPageContent;

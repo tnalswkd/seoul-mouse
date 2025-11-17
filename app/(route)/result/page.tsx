@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 import Image from "next/image";
@@ -143,8 +143,8 @@ function ResultPageContent() {
             <Image
               src={loadingImage}
               alt="로딩중"
-              width={120}
-              height={120}
+              width={205}
+              height={44}
               priority
             />
           </S.Spinner>
@@ -252,8 +252,8 @@ const S = {
   `,
 
   Spinner: styled.div`
-    width: 64px;
-    height: 64px;
+    width: 205px;
+    height: 44px;
     position: relative;
     display: flex;
     align-items: center;
@@ -313,29 +313,4 @@ const S = {
   `,
 };
 
-export default function ResultPage() {
-  return (
-    <Suspense fallback={
-      <S.LoadingContainer>
-        <S.LoadingWrapper>
-          <S.Spinner>
-            <Image
-              src={loadingImage}
-              alt="로딩중"
-              width={120}
-              height={120}
-              priority
-            />
-          </S.Spinner>
-          <S.TextWrapper>
-            <Typography variant="title" color="black">
-              너한테 맞는 서울을 둘러보는쥥
-            </Typography>
-          </S.TextWrapper>
-        </S.LoadingWrapper>
-      </S.LoadingContainer>
-    }>
-      <ResultPageContent />
-    </Suspense>
-  );
-}
+export default ResultPageContent;
