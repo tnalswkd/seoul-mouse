@@ -45,7 +45,7 @@ export default function TypeSelectPage() {
   ];
 
   const handleBack = () => {
-    router.back();
+    router.push("/");
   };
 
   const handleNext = () => {
