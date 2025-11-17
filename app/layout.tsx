@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 import StyledComponentsRegistry from "./_libs/provider/StyledComponentsRegistry";
 import ThemeContextProvider from "./_libs/provider/themeProvider";
@@ -44,10 +45,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="antialiased">
+    <html lang="ko" suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
         <StyledComponentsRegistry>
-          <ThemeContextProvider>{children}</ThemeContextProvider>
+          <ThemeContextProvider>
+            <Suspense fallback={<div>Loading...</div>}>
+              {children}
+            </Suspense>
+          </ThemeContextProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
